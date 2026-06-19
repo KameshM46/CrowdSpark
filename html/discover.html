@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Campaigns - Crowdspark</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>⚡ Crowdspark</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="create-campaign.html" >Start a Campaign</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#" id="logout-btn" style="display:none;">Logout</a></li>
+                <li><a href="login.html" id="login-btn">Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <h1>Discover Campaigns</h1>
+        <div class="filters">
+            <input type="text" id="search-input" placeholder="Search campaigns..." class="search-box">
+            <select id="category-filter" class="filter-select">
+                <option value="">All Categories</option>
+                <option value="technology">Technology</option>
+                <option value="art">Art</option>
+                <option value="film">Film</option>
+                <option value="games">Games</option>
+                <option value="music">Music</option>
+                <option value="food">Food</option>
+                <option value="fashion">Fashion</option>
+                <option value="publishing">Publishing</option>
+                <option value="design">Design</option>
+            </select>
+            <select id="sort-filter" class="filter-select">
+                <option value="recent">Most Recent</option>
+                <option value="trending">Trending</option>
+                <option value="ending_soon">Ending Soon</option>
+                <option value="most_funded">Most Funded</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Campaigns Grid -->
+    <section class="campaigns-section">
+        <div class="campaigns-grid" id="campaigns-grid">
+            <p>Loading campaigns...</p>
+        </div>
+        <div class="pagination" id="pagination"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <p>Crowdspark connects creators with backers worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+           
+        </div>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/discover.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Campaign - Crowdspark</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>⚡ Crowdspark</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="create-campaign.html" >Start a Campaign</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#" id="logout-btn" style="display:none;">Logout</a></li>
+                <li><a href="login.html" id="login-btn">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Campaign Creation Form -->
+    <section class="create-campaign">
+        <h1>Create Your Campaign</h1>
+        <form id="campaign-form" class="campaign-form">
+            <!-- Step 1: Basic Info -->
+            <div class="form-section active" id="step-1">
+                <h2>Campaign Basics</h2>
+                <div class="form-group">
+                    <label for="title">Campaign Title</label>
+                    <input type="text" id="title" name="title" required placeholder="Give your campaign a compelling title">
+                </div>
+                <div class="form-group">
+                    <label for="short-description">Short Description (160 characters)</label>
+                    <textarea id="short-description" name="shortDescription" maxlength="160" required placeholder="Brief description for campaign cards"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="description">Full Description</label>
+                    <textarea id="description" name="description" required placeholder="Tell your story, explain your project..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="technology">Technology</option>
+                        <option value="art">Art</option>
+                        <option value="film">Film</option>
+                        <option value="games">Games</option>
+                        <option value="music">Music</option>
+                        <option value="food">Food</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="publishing">Publishing</option>
+                        <option value="design">Design</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next: Funding Details</button>
+            </div>
+
+            <!-- Step 2: Funding Details -->
+            <div class="form-section" id="step-2">
+                <h2>Funding Details</h2>
+                <div class="form-group">
+                    <label for="funding-goal">Funding Goal ($)</label>
+                    <input type="number" id="funding-goal" name="fundingGoal" min="100" required placeholder="100">
+                </div>
+                <div class="form-group">
+                    <label for="end-date">Campaign End Date</label>
+                    <input type="date" id="end-date" name="endDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="thumbnail">Campaign Thumbnail URL</label>
+                    <input type="url" id="thumbnail" name="thumbnail" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="video-pitch">Video Pitch URL (YouTube/Vimeo)</label>
+                    <input type="url" id="video-pitch" name="videoPitchUrl" placeholder="https://youtube.com/...">
+                </div>
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Back</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next: Reward Tiers</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Reward Tiers -->
+            <div class="form-section" id="step-3">
+                <h2>Reward Tiers</h2>
+                <p>Create reward tiers to incentivize different pledge levels</p>
+                <div id="reward-tiers-container">
+                    <div class="reward-tier">
+                        <input type="number" placeholder="Pledge Amount ($)" class="reward-amount" min="1">
+                        <input type="text" placeholder="Reward Title" class="reward-title">
+                        <textarea placeholder="Reward Description" class="reward-description" rows="2"></textarea>
+                        <input type="number" placeholder="Quantity Available" class="reward-quantity" min="0">
+                        <input type="text" placeholder="Estimated Delivery" class="reward-delivery">
+                        <button type="button" class="btn btn-danger" onclick="removeRewardTier(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="addRewardTier()">+ Add Another Tier</button>
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Back</button>
+                    <button type="submit" class="btn btn-primary">Create Campaign</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Fee Transparency -->
+        <div class="fee-info">
+            
+            
+        </div>
+    </section>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/create-campaign.js"></script>
+</body>
+</html>

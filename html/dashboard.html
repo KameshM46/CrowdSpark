@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backer Dashboard - Crowdspark</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>⚡ Crowdspark</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="create-campaign.html">Start a Campaign</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#" id="logout-btn" style="display:none;">Logout</a></li>
+                <li><a href="login.html" id="login-btn">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <h1>Your Dashboard</h1>
+        
+        <!-- Tabs -->
+        <div class="dashboard-tabs">
+            <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+            <button class="tab-btn" onclick="switchTab('campaigns')">My Campaigns</button>
+            <button class="tab-btn" onclick="switchTab('pledges')">My Pledges</button>
+            <button class="tab-btn" onclick="switchTab('rewards')">My Rewards</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Backed</h3>
+                    <p id="total-backed">₹0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Campaigns Supported</h3>
+                    <p id="campaigns-supported">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Rewards Earned</h3>
+                    <p id="rewards-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Pledges</h3>
+                    <p id="active-pledges">0</p>
+                </div>
+            </div>
+
+            <h2>Recent Activity</h2>
+            <div id="recent-activity"></div>
+        </div>
+
+        <!-- Campaigns Tab -->
+        <div id="campaigns" class="tab-content">
+            <h2>Campaigns You're Backing</h2>
+            <div id="my-campaigns-list"></div>
+        </div>
+
+        <!-- Pledges Tab -->
+        <div id="pledges" class="tab-content">
+            <h2>My Pledges</h2>
+            <div id="pledges-list"></div>
+        </div>
+
+        <!-- Rewards Tab -->
+        <div id="rewards" class="tab-content">
+            <h2>Rewards You've Earned</h2>
+            <div id="rewards-list"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <p>Crowdspark connects creators with backers worldwide.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        
+        </div>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

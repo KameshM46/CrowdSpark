@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdfunding Platform - Bring Ideas to Life</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>⚡ Crowdspark</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="create-campaign.html">Start a Campaign</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#" id="logout-btn" style="display:none;">Logout</a></li>
+                <li><a href="login.html" id="login-btn">Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bring Your Ideas to Life</h1>
+            <p>Connect with a community of creators and backers. Fund innovative projects and make a difference.</p>
+            <div class="hero-buttons">
+                <a href="discover.html" class="btn btn-primary">Explore Campaigns</a>
+                <a href="create-campaign.html" class="btn btn-secondary">Create Campaign</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <h3 id="stat-campaigns">0</h3>
+                <p>Active Campaigns</p>
+            </div>
+            <div class="stat">
+                <h3 id="stat-raised">₹0</h3>
+                <p>Funds Raised</p>
+            </div>
+            <div class="stat">
+                <h3 id="stat-backers">0</h3>
+                <p>Community Members</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Campaigns -->
+    <section class="trending">
+        <h2>Trending Now</h2>
+        <div class="campaigns-grid" id="trending-campaigns">
+            <p>Loading campaigns...</p>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2>Browse by Category</h2>
+        <div class="category-grid">
+            <div class="category-card" onclick="filterByCategory('technology')">
+                <div class="category-icon">💻</div>
+                <p>Technology</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('art')">
+                <div class="category-icon">🎨</div>
+                <p>Art</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('film')">
+                <div class="category-icon">🎬</div>
+                <p>Film</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('games')">
+                <div class="category-icon">🎮</div>
+                <p>Games</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('music')">
+                <div class="category-icon">🎵</div>
+                <p>Music</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('food')">
+                <div class="category-icon">🍕</div>
+                <p>Food</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Create</h3>
+                <p>Creators launch campaigns with clear goals and reward tiers</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Discover</h3>
+                <p>Backers explore campaigns and support projects they believe in</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Fund</h3>
+                <p>Funds are secured when the goal is reached</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Deliver</h3>
+                <p>Creators deliver rewards and keep backers updated</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <p>Crowdspark connects creators with backers worldwide to bring innovative ideas to life.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="https://x.com">Twitter</a></li>
+                    <li><a href="https://facebook.com">Facebook</a></li>
+                    <li><a href="https://instagram.com">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <!-- <p>&copy; 2026 Crowdspark. All rights reserved.</p> -->
+        </div>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>

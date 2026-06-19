@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Funding-details</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>⚡ Crowdspark</h1>
+            </div>
+        </div>
+    </nav>
+    <section class="auth-section">
+    <div class="auth-container">
+
+        <!-- Funding Form -->
+        <div class="auth-card">
+            <h1>Funding Details</h1>
+
+            <div class="form-group">
+                <label for="goal-amount">Funding Goal (₹)</label>
+                <input
+                    type="number"
+                    id="goal-amount"
+                    name="goalAmount"
+                    placeholder="Enter your funding goal"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="campaign-duration">Campaign Duration</label>
+                <select id="campaign-duration" name="campaignDuration">
+                    <option value="">Select Duration</option>
+                    <option value="30">30 Days</option>
+                    <option value="45">45 Days</option>
+                    <option value="60">60 Days</option>
+                    <option value="90">90 Days</option>
+                    <option value="120">120 Days</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="minimum-pledge">Minimum Contribution (₹)</label>
+                <input
+                    type="number"
+                    id="minimum-pledge"
+                    name="minimumPledge"
+                    placeholder="Minimum contribution amount"
+                >
+            </div>
+
+            <h3>Reward Tier</h3>
+
+            <div class="form-group">
+                <label for="reward-name">Reward Name</label>
+                <input
+                    type="text"
+                    id="reward-name"
+                    name="rewardName"
+                    placeholder="e.g. Early Supporter"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="reward-amount">Reward Amount (₹)</label>
+                <input
+                    type="number"
+                    id="reward-amount"
+                    name="rewardAmount"
+                    placeholder="Contribution amount"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="reward-description">Reward Description</label>
+                <textarea
+                    id="reward-description"
+                    name="rewardDescription"
+                    rows="4"
+                    placeholder="Describe the reward offered to supporters"
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="fund-usage">How Will The Funds Be Used?</label>
+                <textarea
+                    id="fund-usage"
+                    name="fundUsage"
+                    rows="5"
+                    placeholder="Explain how the funds will be allocated"
+                ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary full-width">
+                Continue
+            </button>
+        </div>
+
+        <!-- Right Side Information -->
+        <div class="auth-info">
+            <h2>Funding Guidelines</h2>
+
+            <p>
+                A well-planned funding strategy increases the chances
+                of reaching your campaign goal and earning backer trust.
+            </p>
+
+            <ul>
+                <li>💰 Set a realistic funding goal.</li>
+                <li>📅 Choose an appropriate campaign duration.</li>
+                <li>🎁 Offer meaningful rewards.</li>
+                <li>📊 Clearly explain fund allocation.</li>
+                <li>🤝 Keep supporters informed.</li>
+            </ul>
+
+            <div class="quote-box">
+                <p>
+                    "Transparency builds trust. The clearer your funding plan,
+                    the more confident backers will feel supporting your project."
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+    
+</body>
+</html>
