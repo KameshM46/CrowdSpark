@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
             const firstName = document.getElementById('first-name').value;
             const role = document.getElementById('role').value;
+            const confirmPassword = document.getElementById('confirmpassword').value;
+            if(password !== confirmPassword){
+            alert("Passwords do not match");
+            return;
+        }
 
             try {
                 const data = await apiCall('/auth/signup', 'POST', {
