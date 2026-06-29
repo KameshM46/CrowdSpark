@@ -1,66 +1,95 @@
-// Authentication page functionality
+async function apiCall(endpoint, method = "GET", data = null) {
+    const response = await fetch(`http://localhost:5500${endpoint}`, {
+        method,
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: data ? JSON.stringify(data) : undefined,
+    });
 
-// Handle login form submission
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+        throw new Error(result.message || "Request failed");
+    }
+
+    return result;
+}
+
+function showFormMessage(form, message) {
+    let messageBox = form.querySelector(".form-message");
+    if (!messageBox) {
+        messageBox = document.createElement("p");
+        messageBox.className = "form-message";
+        form.insertBefore(messageBox, form.firstChild);
+    }
+    messageBox.textContent = message;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".password-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+            const input = document.getElementById(targetId);
+            if (!input) return;
+
+            const isPassword = input.type === "password";
+            input.type = isPassword ? "text" : "password";
+            button.textContent = isPassword ? "Hide" : "Show";
+            button.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
+        });
+    });
+
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
 
     if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
+        loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
 
             try {
-                const data = await apiCall('/auth/login', 'POST', { email, password });
-                
-                localStorage.setItem('authToken', data.token);
-                localStorage.setItem('userData', JSON.stringify(data.user));
-                
-                showSuccess('Login successful!');
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1000);
+                const data = await apiCall("/auth/login", "POST", { email, password });
+                localStorage.setItem("authToken", data.token);
+                localStorage.setItem("userData", JSON.stringify(data.user));
+                window.location.href = "index.html";
             } catch (error) {
-                showError('Login failed. Please check your credentials.');
+                showFormMessage(loginForm, error.message);
             }
         });
     }
 
     if (signupForm) {
-        signupForm.addEventListener('submit', async (e) => {
+        signupForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const firstName = document.getElementById('first-name').value;
-            const role = document.getElementById('role').value;
-            const confirmPassword = document.getElementById('confirmpassword').value;
-            if(password !== confirmPassword){
-            alert("Passwords do not match");
-            return;
-        }
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const firstName = document.getElementById("first-name").value.trim();
+            const role = document.getElementById("role").value;
+            const confirmPassword = document.getElementById("confirmpassword").value;
+
+            if (password !== confirmPassword) {
+                showFormMessage(signupForm, "Passwords do not match");
+                return;
+            }
 
             try {
-                const data = await apiCall('/auth/signup', 'POST', {
+                const data = await apiCall("/auth/signup", "POST", {
                     username,
                     email,
                     password,
                     firstName,
-                    role
+                    role,
                 });
-                
-                localStorage.setItem('authToken', data.token);
-                localStorage.setItem('userData', JSON.stringify(data.user));
-                
-                showSuccess('Account created successfully!');
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1000);
+                localStorage.setItem("authToken", data.token);
+                localStorage.setItem("userData", JSON.stringify(data.user));
+                window.location.href = "index.html";
             } catch (error) {
-                showError('Signup failed. Please try again.');
+                showFormMessage(signupForm, error.message);
             }
         });
     }

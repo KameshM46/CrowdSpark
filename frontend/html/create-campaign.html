@@ -65,7 +65,7 @@
             <div class="form-section" id="step-2">
                 <h2>Funding Details</h2>
                 <div class="form-group">
-                    <label for="funding-goal">Funding Goal ($)</label>
+                    <label for="funding-goal">Funding Goal (₹)</label>
                     <input type="number" id="funding-goal" name="fundingGoal" min="100" required placeholder="100">
                 </div>
                 <div class="form-group">
@@ -81,28 +81,7 @@
                     <input type="url" id="video-pitch" name="videoPitchUrl" placeholder="https://youtube.com/...">
                 </div>
                 <div class="button-group">
-                    <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Back</button>
-                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next: Reward Tiers</button>
-                </div>
-            </div>
-
-            <!-- Step 3: Reward Tiers -->
-            <div class="form-section" id="step-3">
-                <h2>Reward Tiers</h2>
-                <p>Create reward tiers to incentivize different pledge levels</p>
-                <div id="reward-tiers-container">
-                    <div class="reward-tier">
-                        <input type="number" placeholder="Pledge Amount ($)" class="reward-amount" min="1">
-                        <input type="text" placeholder="Reward Title" class="reward-title">
-                        <textarea placeholder="Reward Description" class="reward-description" rows="2"></textarea>
-                        <input type="number" placeholder="Quantity Available" class="reward-quantity" min="0">
-                        <input type="text" placeholder="Estimated Delivery" class="reward-delivery">
-                        <button type="button" class="btn btn-danger" onclick="removeRewardTier(this)">Remove</button>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-secondary" onclick="addRewardTier()">+ Add Another Tier</button>
-                <div class="button-group">
-                    <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Back</button>
+                    <button type="button" class="btn btn-second" onclick="prevStep(1)">Back</button>
                     <button type="submit" class="btn btn-primary">Create Campaign</button>
                 </div>
             </div>
@@ -115,6 +94,41 @@
         </div>
     </section>
 
+    <script>
+        (function () {
+            const loginBtn = document.getElementById('login-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            const user = JSON.parse(localStorage.getItem('userData') || 'null');
+
+            if (user) {
+                const displayName = user.username || user.firstName || user.email?.split('@')[0] || 'Account';
+                if (loginBtn) {
+                    loginBtn.textContent = `Hi, ${displayName}`;
+                    loginBtn.href = 'dashboard.html';
+                }
+                if (logoutBtn) {
+                    logoutBtn.style.display = 'inline-block';
+                }
+            } else {
+                if (loginBtn) {
+                    loginBtn.textContent = 'Login';
+                    loginBtn.href = 'login.html';
+                }
+                if (logoutBtn) {
+                    logoutBtn.style.display = 'none';
+                }
+            }
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('userData');
+                    window.location.reload();
+                });
+            }
+        })();
+    </script>
     <script src="../js/common.js"></script>
     <script src="../js/create-campaign.js"></script>
 </body>

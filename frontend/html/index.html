@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -29,14 +28,13 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Bring Your Ideas to Life</h1>
             <p>Connect with a community of creators and backers. Fund innovative projects and make a difference.</p>
             <div class="hero-buttons">
                 <a href="discover.html" class="btn btn-primary">Explore Campaigns</a>
-                <a href="create-campaign.html" class="btn btn-secondary">Create Campaign</a>
+                <a href="create-campaign.html" class="btn btn-second">Create Campaign</a>
             </div>
         </div>
         <div class="hero-stats">
@@ -55,7 +53,6 @@
         </div>
     </section>
 
-    <!-- Trending Campaigns -->
     <section class="trending">
         <h2>Trending Now</h2>
         <div class="campaigns-grid" id="trending-campaigns">
@@ -63,7 +60,6 @@
         </div>
     </section>
 
-    <!-- Categories -->
     <section class="categories">
         <h2>Browse by Category</h2>
         <div class="category-grid">
@@ -94,7 +90,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
     <section class="how-it-works">
         <h2>How It Works</h2>
         <div class="steps">
@@ -121,7 +116,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -145,11 +139,44 @@
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <!-- <p>&copy; 2026 Crowdspark. All rights reserved.</p> -->
-        </div>
+        <div class="footer-bottom"></div>
     </footer>
 
+    <script>
+        (function () {
+            const loginBtn = document.getElementById('login-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            const user = JSON.parse(localStorage.getItem('userData') || 'null');
+
+            if (user) {
+                const displayName = user.username || user.firstName || user.email?.split('@')[0] || 'Account';
+                if (loginBtn) {
+                    loginBtn.textContent = `Hi, ${displayName}`;
+                    loginBtn.href = 'dashboard.html';
+                }
+                if (logoutBtn) {
+                    logoutBtn.style.display = 'inline-block';
+                }
+            } else {
+                if (loginBtn) {
+                    loginBtn.textContent = 'Login';
+                    loginBtn.href = 'login.html';
+                }
+                if (logoutBtn) {
+                    logoutBtn.style.display = 'none';
+                }
+            }
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('userData');
+                    window.location.reload();
+                });
+            }
+        })();
+    </script>
     <script src="../js/common.js"></script>
     <script src="../js/index.js"></script>
 </body>

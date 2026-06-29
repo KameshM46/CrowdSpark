@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backer Dashboard - Crowdspark</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <script type="text/javascript" src="../javascript/validation.js" defer ></script>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -27,8 +25,7 @@
 
     <section class="dashboard">
         <h1>Your Dashboard</h1>
-        
-        <!-- Tabs -->
+
         <div class="dashboard-tabs">
             <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
             <button class="tab-btn" onclick="switchTab('campaigns')">My Campaigns</button>
@@ -36,7 +33,6 @@
             <button class="tab-btn" onclick="switchTab('rewards')">My Rewards</button>
         </div>
 
-        <!-- Overview Tab -->
         <div id="overview" class="tab-content active">
             <div class="stats-grid">
                 <div class="stat-card">
@@ -61,26 +57,22 @@
             <div id="recent-activity"></div>
         </div>
 
-        <!-- Campaigns Tab -->
         <div id="campaigns" class="tab-content">
-            <h2>Campaigns You're Backing</h2>
+            <h2>Your Campaigns</h2>
             <div id="my-campaigns-list"></div>
         </div>
 
-        <!-- Pledges Tab -->
         <div id="pledges" class="tab-content">
             <h2>My Pledges</h2>
             <div id="pledges-list"></div>
         </div>
 
-        <!-- Rewards Tab -->
         <div id="rewards" class="tab-content">
             <h2>Rewards You've Earned</h2>
             <div id="rewards-list"></div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -88,11 +80,45 @@
                 <p>Crowdspark connects creators with backers worldwide.</p>
             </div>
         </div>
-        <div class="footer-bottom">
-        
-        </div>
+        <div class="footer-bottom"></div>
     </footer>
 
+    <script src="../../javascript/validation.js"></script>
+    <script>
+        (function () {
+            const loginBtn = document.getElementById('login-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            const user = JSON.parse(localStorage.getItem('userData') || 'null');
+
+            if (user) {
+                const displayName = user.username || user.firstName || user.email?.split('@')[0] || 'Account';
+                if (loginBtn) {
+                    loginBtn.textContent = `Hi, ${displayName}`;
+                    loginBtn.href = 'dashboard.html';
+                }
+                if (logoutBtn) {
+                    logoutBtn.style.display = 'inline-block';
+                }
+            } else {
+                if (loginBtn) {
+                    loginBtn.textContent = 'Login';
+                    loginBtn.href = 'login.html';
+                }
+                if (logoutBtn) {
+                    logoutBtn.style.display = 'none';
+                }
+            }
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('userData');
+                    window.location.reload();
+                });
+            }
+        })();
+    </script>
     <script src="../js/common.js"></script>
     <script src="../js/dashboard.js"></script>
 </body>

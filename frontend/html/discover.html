@@ -85,6 +85,41 @@
         </div>
     </footer>
 
+    <script>
+        (function () {
+            const loginBtn = document.getElementById('login-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            const user = JSON.parse(localStorage.getItem('userData') || 'null');
+
+            if (user) {
+                const displayName = user.username || user.firstName || user.email?.split('@')[0] || 'Account';
+                if (loginBtn) {
+                    loginBtn.textContent = `Hi, ${displayName}`;
+                    loginBtn.href = 'dashboard.html';
+                }
+                if (logoutBtn) {
+                    logoutBtn.style.display = 'inline-block';
+                }
+            } else {
+                if (loginBtn) {
+                    loginBtn.textContent = 'Login';
+                    loginBtn.href = 'login.html';
+                }
+                if (logoutBtn) {
+                    logoutBtn.style.display = 'none';
+                }
+            }
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('userData');
+                    window.location.reload();
+                });
+            }
+        })();
+    </script>
     <script src="../js/common.js"></script>
     <script src="../js/discover.js"></script>
 </body>
