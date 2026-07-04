@@ -1,5 +1,5 @@
 async function apiCall(endpoint, method = "GET", data = null) {
-    const response = await fetch(`http://localhost:5500${endpoint}`, {
+    const response = await fetch(`http://localhost:5000${endpoint}`, {
         method,
         headers: {
             "Content-Type": "application/json",
